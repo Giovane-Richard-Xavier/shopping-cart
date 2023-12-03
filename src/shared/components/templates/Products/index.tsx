@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import styles from './styles.module.css';
 import { ApiProducts } from '@/service/api/axios/products/apiProducts';
+import { IProducts } from '@/service/api/axios/products/type';
+import { useEffect, useState } from 'react';
 import { ProductCard } from '../../organism/ProductCard';
+import styles from './styles.module.css';
 
 export const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<IProducts[]>([]);
 
   useEffect(() => {
-    const response = ApiProducts.getProducts("fans aigo");
-    console.log("response", response);
-    console.log(products);
-    // setProducts(response);
+    const getAllProducts = async () => {
+      try {
+        const response = await ApiProducts.getProducts("pc gamer");
+        console.log(response);
+        setProducts(response);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    getAllProducts();
   }, []);
 
   return (
     <section className={`${styles.products} container`}>
-      <ProductCard />
+      {products.length > 0 ? (
+        <div className={styles.products_item}>
+          {products?.map((product) => <ProductCard key={product.id} data={product} />)}
+        </div>
+      ) : (
+        <h3>Buscando Produtos..</h3>
+      )}
+
     </section>
   )
 }

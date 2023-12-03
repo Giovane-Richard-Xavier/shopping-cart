@@ -6,6 +6,7 @@
   background-color: #fff159;
   height: 90px;
   width: 100vw;
+  z-index: 100;
 }
 .header > div {
   display: flex;
