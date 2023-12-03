@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/StyleGlobal.module.css';
 import { Header } from '@/shared/components/organism/Header';
 import { Products } from '@/shared/components/templates/Products';
+import { ProviderProducts } from '@/context/Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,8 +20,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Header />
-        <Products />
+        <ProviderProducts>
+          <Header />
+          <Products />
+        </ProviderProducts>
       </main>
     </>
   );
