@@ -8,14 +8,16 @@ export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
 
   // Context
-  const {products, setProducts} = useProducts();
+  const {products, setProducts, setLoading} = useProducts();
 
   const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if(searchValue) {
+      setLoading(true);
       const searchProdcts =  await ApiProducts.getProducts(searchValue);
       setProducts(searchProdcts);
+      setLoading(false);
     }
     
     setSearchValue("");
