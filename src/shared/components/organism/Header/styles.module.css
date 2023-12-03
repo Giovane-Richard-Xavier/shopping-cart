@@ -1,0 +1,14 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff159;
+  height: 90px;
+  width: 100vw;
+}
+.header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
