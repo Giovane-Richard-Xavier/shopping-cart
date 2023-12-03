@@ -1,0 +1,10 @@
+.logo {
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 425px) {
+  .logo {
+    display: none;
+  }
+}
